@@ -2,12 +2,15 @@ const message = document.querySelector('#message');
 const selections = document.querySelectorAll('.selection');
 const playerText = document.querySelector('#playerChoice');
 const computerText = document.querySelector('#computerChoice')
+const standingsText = document.querySelector('#standings');
 const rockPaperScissor = ['rock','paper','scissor'];
 let playerChoice = undefined
 let computerChoice = undefined;
-let computerTurn = false
 let randomNum = undefined;
-    
+let computerTurn = false
+let userWin = false;
+let computerWin = false;
+
 
 playRound();
 
@@ -17,24 +20,24 @@ function playRound() {
             if (selections[i]) {
                 playerChoice = rockPaperScissor[i];
             } else {
-                return console.error(failure);
+                return console.error('failure');
             }
             computerTurn = true;
             computerPlay();
-            decisions(playerChoice, computerChoice);
             winner();
+            decisions(playerChoice, computerChoice);
             return computerTurn = false;
         });
     };
 };
 
-function randomMove() {
+function randomNumber() {
     return randomNum = Math.floor(Math.random() * Math.floor(3))
 }
 
 function computerPlay() {
     if (computerTurn === true) {
-        randomMove();
+        randomNumber();
         return computerChoice = rockPaperScissor[randomNum];
     };
 };
@@ -44,35 +47,56 @@ function decisions(playerSelection, computerSelection) {
     message.textContent = `Player chose ${playerSelection}, Computer chose ${computerSelection}`;
     playerText.textContent = playerSelection;
     computerText.textContent = computerSelection;
-}
+    if (userWin) {
+        standingsText.textContent = `you win!`;
+        standingsText.style.color = "green";
+    } else if (computerWin) {
+        standingsText.textContent = `computer wins!`;
+        standingsText.style.color = "red";
+    } else {
+        standingsText.textContent =`tie!`;
+        standingsText.style.color = "orange";
+
+    };
+};
 
 function winner() {
     if (playerChoice === computerChoice){
-        console.log('tie!');
+        userWin = false;
+        computerWin = false;
     }; 
     if (playerChoice !== computerChoice){
         if (playerChoice === "paper" && computerChoice === "rock") {
-            console.log('paper wins');
-        } else if (computerChoice === "scissor") {
-            console.log('scissor wins!')
-        }
-            // if (computerChoice === "rock") {
-            //     console.log("paper wins");
-            // } else {
-            //     if (computerChoice === "scissors") {
-            //         console.log("scissors wins");
-            //     }
-            // }
-        
-        // if (playerChoice === "scissors") {
-        //     if (computerChoice === "rock") {
-        //         console.log("rock wins");
-        //     } else {
-        //         if (computerChoice === "paper") {
-        //             console.log("scissors wins") ;
-        //         }
+            computerWin = false
+            return userWin = true
+        } else if (playerChoice === "paper" && computerChoice === "scissor") {
+            userWin = false
+            return computerWin = true
+        };
+        if (playerChoice === "scissor" && computerChoice === "paper") {
+            computerWin = false
+            return userWin = true
+        } else if (playerChoice === "scissor" && computerChoice === "rock") {
+            userWin = false
+            return computerWin = true
+        };
+        if (playerChoice === "rock" && computerChoice === "scissor") {
+            computerWin = false
+            return userWin = true
+        } else if (playerChoice === "rock" && computerChoice === "paper") {
+            userWin = false
+            return computerWin = true
+        };
+        // COMMENTED CODE IS ANOTHER SIMILAR METHOD
+        // if (playerChoice === "rock") {
+        //     if (computerChoice === "scissor") {
+        //         console.log('you win!');
+        //     } else if (computerChoice === "paper") {
+        //         console.log('computer wins!')
         //     }
         // }
-    }
-}
+    };
+};
+
+
 
