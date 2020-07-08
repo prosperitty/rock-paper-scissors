@@ -3,6 +3,8 @@ const selections = document.querySelectorAll('.selection');
 const playerText = document.querySelector('#playerChoice');
 const computerText = document.querySelector('#computerChoice')
 const standingsText = document.querySelector('#standings');
+const playerScore = document.querySelector('#playerScore');
+const computerScore = document.querySelector('#computerScore');
 const rockPaperScissor = ['rock','paper','scissor'];
 let playerChoice = undefined
 let computerChoice = undefined;
@@ -10,6 +12,9 @@ let randomNum = undefined;
 let computerTurn = false
 let userWin = false;
 let computerWin = false;
+let userTally = 0
+let computerTally = 0
+let draw = 0
 
 
 playRound();
@@ -25,6 +30,7 @@ function playRound() {
             computerTurn = true;
             computerPlay();
             winner();
+            tally();
             decisions(playerChoice, computerChoice);
             return computerTurn = false;
         });
@@ -95,6 +101,19 @@ function winner() {
         //         console.log('computer wins!')
         //     }
         // }
+    };
+};
+
+function tally() {
+    if (userWin) {
+        console.log(userTally += 1);
+        return playerScore.textContent = `${userTally}`;
+
+    } else if (computerWin) {
+        console.log(computerTally += 1);
+        return computerScore.textContent = `${computerTally}`;
+    }   else {
+        return console.log(draw +=1);
     };
 };
 
