@@ -9,12 +9,12 @@
 <body>
 
     <div>
-        <h2>rock, paper, scissor!</h2>
+        <h2>rock paper scissor!</h2>
     </div>
     <div>
-        <p id="message">choose your move!</p>
+        <p id="message">click your choice to begin!</p>
     </div>
-    <div id="rock-paper-scissor-buttons">
+    <div id="rock-paper-scissor-box">
         <form action="">
             <button type ="button" class="selection" id="rock"></button>
             <button type ="button" class="selection" id="paper"></button>
@@ -25,15 +25,15 @@
     <div id="selections">
         <div id="left-side-player-box">
             <span class="players">you</span>
-            <span id="playerChoice">awaiting your choice...</span>
+            <p class="choice" id="playerChoice"></p>
         </div>
         <div id="middle-standings-box">
-            <span id="standings">Computer Wins!</span>
+            <span id="standings"></span>
             <p  id="scores"><span id="playerScore">0</span>-<span id="computerScore">0</span></p>
         </div>
         <div id="right-side-computer-box">
             <span class="players">computer</span>
-            <p id="computerChoice">awaiting computer's choice...</p>
+            <p class="choice" id="computerChoice"></p>
         </div>
     </div>
 </body>
