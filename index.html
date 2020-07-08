@@ -9,30 +9,31 @@
 <body>
 
     <div>
-        <h2 id="gameStatus">welcome</h2>
+        <h2>rock, paper, scissor!</h2>
     </div>
     <div>
         <p id="message">choose your move!</p>
     </div>
     <div id="rock-paper-scissor-buttons">
         <form action="">
-            <button type ="button" class="select" id="rock"></button>
-            <button type ="button" class="select" id="paper"></button>
-            <button type ="button" class="select" id="scissor"></button>
+            <button type ="button" class="selection" id="rock"></button>
+            <button type ="button" class="selection" id="paper"></button>
+            <button type ="button" class="selection" id="scissor"></button>
         </form>
     </div>
 
     <div id="selections">
         <div id="left-side-player-box">
             <span class="players">you</span>
-            <span id="choice">paper</span>
+            <span id="playerChoice">awaiting your choice...</span>
         </div>
         <div id="middle-standings-box">
-            <span id="standing">computer wins!</span>
+            <span id="standings">Computer Wins!</span>
+            <p  id="scores"><span id="playerScore">0</span>-<span id="computerScore">0</span></p>
         </div>
         <div id="right-side-computer-box">
             <span class="players">computer</span>
-            <p>rock</p>
+            <p id="computerChoice">awaiting computer's choice...</p>
         </div>
     </div>
 </body>
