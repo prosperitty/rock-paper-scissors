@@ -19,6 +19,7 @@ let draw = 0
 
 playRound();
 
+
 function playRound() {
     for (const i in selections) {
         selections[i].addEventListener("click", function() {
@@ -31,6 +32,7 @@ function playRound() {
             computerPlay();
             winner();
             tally();
+            bestOf5(userTally, computerTally);
             decisions(playerChoice, computerChoice);
             return computerTurn = false;
         });
@@ -116,6 +118,16 @@ function tally() {
         return console.log(draw +=1);
     };
 };
+
+function bestOf5(userScore, computerScore) {
+    if (userScore === 5) {
+        console.log(`You win the game!`);
+    } else if (computerScore === 5) {
+        console.log(`computer wins the game`);
+    }
+}
+
+
 
 
 
