@@ -1,10 +1,13 @@
+const body = document.querySelector('body');
 const message = document.querySelector('#message');
 const selections = document.querySelectorAll('.selection');
 const playerText = document.querySelector('#playerChoice');
 const computerText = document.querySelector('#computerChoice')
 const standingsText = document.querySelector('#standings');
+const standingsText2 = document.querySelector('#standings2')
 const playerScore = document.querySelector('#playerScore');
 const computerScore = document.querySelector('#computerScore');
+const tryAgain = document.querySelector('.hidden');
 const rockPaperScissor = ['rock','paper','scissor'];
 let playerChoice = undefined
 let computerChoice = undefined;
@@ -15,14 +18,13 @@ let computerWin = false;
 let userTally = 0
 let computerTally = 0
 let draw = 0
-
+let gameOver = false
 
 playRound();
 
-
 function playRound() {
-    for (const i in selections) {
-        selections[i].addEventListener("click", function() {
+    for (let i=0; i < selections.length; i++) {
+        selections[i].addEventListener("click", function () {
             if (selections[i]) {
                 playerChoice = rockPaperScissor[i];
             } else {
@@ -32,20 +34,16 @@ function playRound() {
             computerPlay();
             winner();
             tally();
-            bestOf5(userTally, computerTally);
+            // bestOf5(userTally, computerTally);
             decisions(playerChoice, computerChoice);
             return computerTurn = false;
         });
     };
 };
 
-function randomNumber() {
-    return randomNum = Math.floor(Math.random() * Math.floor(3))
-}
-
 function computerPlay() {
     if (computerTurn === true) {
-        randomNumber();
+        randomNum = Math.floor(Math.random() * Math.floor(3));
         return computerChoice = rockPaperScissor[randomNum];
     };
 };
@@ -56,10 +54,10 @@ function decisions(playerSelection, computerSelection) {
     playerText.textContent = playerSelection;
     computerText.textContent = computerSelection;
     if (userWin) {
-        standingsText.textContent = `you win!`;
+        standingsText.textContent = `you win! ${playerSelection} beats ${computerSelection}`;
         standingsText.style.color = "green";
     } else if (computerWin) {
-        standingsText.textContent = `computer wins!`;
+        standingsText.textContent = `computer wins! ${computerSelection} beats ${playerSelection}`;
         standingsText.style.color = "red";
     } else {
         standingsText.textContent =`tie!`;
@@ -72,6 +70,7 @@ function winner() {
     if (playerChoice === computerChoice){
         userWin = false;
         computerWin = false;
+        return;
     }; 
     if (playerChoice !== computerChoice){
         if (playerChoice === "paper" && computerChoice === "rock") {
@@ -108,25 +107,41 @@ function winner() {
 
 function tally() {
     if (userWin) {
-        console.log(userTally += 1);
+        userTally += 1
+        console.log(userTally);
         return playerScore.textContent = `${userTally}`;
 
     } else if (computerWin) {
-        console.log(computerTally += 1);
+        computerTally += 1;
+        console.log(computerTally);
         return computerScore.textContent = `${computerTally}`;
     }   else {
-        return console.log(draw +=1);
+        draw += 1;
+        return console.log(draw);
     };
 };
 
-function bestOf5(userScore, computerScore) {
-    if (userScore === 5) {
-        console.log(`You win the game!`);
-    } else if (computerScore === 5) {
-        console.log(`computer wins the game`);
-    }
-}
+// function bestOf5(userScore, computerScore) {
+//     if (userScore === 5) {
+//         console.log(`You win the game!`);
+//         body.style.background = "green";
+//         return gameOver = true
+//     } else if (computerScore === 5) {
+//         console.log(`computer wins the game`);
+//         body.style.background = "red";
+//         return gameOver = true
+//     }
+// }
 
+// function gameCheck() {
+//     if(!gameOver) {
+//         console.log('game not over');
+//     } else {
+//         console.log('game over');
+//         alert('gameover');
+//         return;
+//     }
+// };
 
 
 
