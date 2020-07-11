@@ -47,7 +47,7 @@ function computerPlay() {
 };
 
 function chooseWinner() {
-    if (playerChoice === computerChoice){
+    if (playerChoice === computerChoice) {
         userWin = false;
         computerWin = false;
         return;

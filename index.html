@@ -7,14 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-
     <div>
         <h2>rock paper scissor!</h2>
     </div>
+
     <div>
         <p id="message">click your choice to begin!</p>
     </div>
-    <div id="rock-paper-scissor-box">
+
+    <div id="selections-box">
         <form action="">
             <button type ="button" class="selection" id="rock"></button>
             <button type ="button" class="selection" id="paper"></button>
@@ -22,23 +23,24 @@
         </form>
     </div>
 
-    <div id="selections">
-        <div id="left-side-player-box">
+    <div id="main-container">
+        <div id="left-column-box">
             <span class="players">you</span>
             <p class="choice" id="playerChoice"></p>
         </div>
-        <div id="middle-standings-box">
+        <div id="middle-column-box">
             <span id="standings"></span>
-            <p  id="scores"><span id="playerScore">0</span>-<span id="computerScore">0</span></p>
+            <p  id="scores">
+                <span id="playerScore">0</span>-<span id="computerScore">0</span>
+            </p>
             <span class="hidden"></span>
         </div>
-        <div id="right-side-computer-box">
+        <div id="right-column-box">
             <span class="players">computer</span>
             <p class="choice" id="computerChoice"></p>
         </div>
     </div>
 </body>
-
 <script src="main.js"></script>
 </html>
 
