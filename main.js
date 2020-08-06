@@ -6,7 +6,6 @@ const computerChoiceText = document.querySelector('#computerChoice')
 const standingsText = document.querySelector('#standings');
 const playerScore = document.querySelector('#playerScore');
 const computerScore = document.querySelector('#computerScore');
-// const tryAgain = document.querySelector('.hidden');
 const rockPaperScissor = ['rock','paper','scissor'];
 let playerChoice = undefined;
 let computerChoice = undefined;
