@@ -1,4 +1,6 @@
 const body = document.querySelector('body');
+const input = document.querySelector('.input-selection');
+const reset = document.querySelector('.reset-button');
 const message = document.querySelector('#message');
 const selections = document.querySelectorAll('.selection');
 const playerChoiceText = document.querySelector('#playerChoice');
@@ -6,7 +8,9 @@ const computerChoiceText = document.querySelector('#computerChoice')
 const standingsText = document.querySelector('#standings');
 const playerScore = document.querySelector('#playerScore');
 const computerScore = document.querySelector('#computerScore');
+const tieScore = document.querySelector('#tie-score');
 const rockPaperScissor = ['rock','paper','scissor'];
+const rock = document.querySelector('#img-rock')
 let playerChoice = undefined;
 let computerChoice = undefined;
 let randomNum = undefined;
@@ -16,6 +20,7 @@ let computerWin = false;
 let userTally = 0;
 let computerTally = 0;
 let draw = 0;
+let winningScore = 5;
 let gameOver = false;
 
 playRound();
@@ -30,9 +35,10 @@ function playRound() {
             };
             computerTurn = true;
             computerPlay();
-            chooseWinner();
+            chooseRoundWinner();
             tally();
             updateStandings(playerChoice, computerChoice);
+            verifyWinner();
             return computerTurn = false;
         });
     };
@@ -45,11 +51,10 @@ function computerPlay() {
     };
 };
 
-function chooseWinner() {
+function chooseRoundWinner() {
     if (playerChoice === computerChoice) {
         userWin = false;
         computerWin = false;
-        return;
     }; 
     if (playerChoice !== computerChoice){
         if (playerChoice === "paper" && computerChoice === "rock") {
@@ -77,17 +82,20 @@ function chooseWinner() {
 };
 
 function tally() {
-    if (userWin) {
-        userTally += 1;
-        console.log(userTally);
-        return playerScore.textContent = `${userTally}`;
-    } else if (computerWin) {
-        computerTally += 1;
-        console.log(computerTally);
-        return computerScore.textContent = `${computerTally}`;
-    }   else {
-        draw += 1;
-        return console.log(draw);
+    if (!gameOver) {
+        if (userWin) {
+            userTally++;
+            console.log(userTally);
+            return playerScore.textContent = `${userTally}`;
+        } else if (computerWin) {
+            computerTally++;
+            console.log(computerTally);
+            return computerScore.textContent = `${computerTally}`;
+        } else {
+            draw++;
+            console.log(draw)
+            return tieScore.textContent = `${draw}`;
+        };
     };
 };
 
@@ -98,7 +106,7 @@ function updateStandings(playerSelection, computerSelection) {
     computerChoiceText.textContent = computerSelection;
     if (userWin) {
         standingsText.textContent = `you win! ${playerSelection} beats ${computerSelection}`;
-        standingsText.style.color = "green";
+        standingsText.style.color = "lightgreen";
     } else if (computerWin) {
         standingsText.textContent = `computer wins! ${computerSelection} beats ${playerSelection}`;
         standingsText.style.color = "red";
@@ -108,30 +116,35 @@ function updateStandings(playerSelection, computerSelection) {
     };
 };
 
+function verifyWinner() {
+    if (userTally  === winningScore) {
+        standingsText.textContent = `Game Over!`;
+        gameOver = true;
+    } else if (computerTally === winningScore) {
+        standingsText.textContent = `Game Over!`;
+        gameOver = true;
+    };
+};
 
+input.addEventListener("change", function(){
+    winningScore = Number(input.value);
+});
 
-// function bestOf5(userScore, computerScore) {
-//     if (userScore === 5) {
-//         console.log(`You win the game!`);
-//         body.style.background = "green";
-//         return gameOver = true
-//     } else if (computerScore === 5) {
-//         console.log(`computer wins the game`);
-//         body.style.background = "red";
-//         return gameOver = true
-//     }
-// }
-
-// function gameCheck() {
-//     if(!gameOver) {
-//         console.log('game not over');
-//     } else {
-//         console.log('game over');
-//         alert('gameover');
-//         return;
-//     }
-// };
-
-
-
-
+reset.addEventListener("click", () => {
+    playerChoice = undefined;
+    computerChoice = undefined;
+    randomNum = undefined;
+    computerTurn = false;
+    userWin = false;
+    computerWin = false;
+    userTally = 0;
+    computerTally = 0;
+    draw = 0;
+    winningScore = 5;
+    gameOver = false;
+    input.value = winningScore;
+    playerScore.textContent = `${userTally}`;
+    computerScore.textContent = `${computerTally}`;
+    tieScore.textContent = `${draw}`;
+    standingsText.textContent = `Make Your Move!`;
+});
