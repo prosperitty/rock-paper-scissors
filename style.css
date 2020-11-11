@@ -1,6 +1,6 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #1f477a;
+body {
+    font-family: 'Architects Daughter', cursive;
+    background-color: #3879ce;
     color: white;
     margin: 0;
     padding: 0;
@@ -8,12 +8,12 @@ body{
     width: 100%;
 }
 
-p  {
+p {
     padding: 0;
     margin: 0;
 }
 
-h2 {
+h1 {
     padding: 10px;
     margin: 0;
     text-align: center;
@@ -21,16 +21,47 @@ h2 {
 }
 
 img {
-    height: 50px;
-    width: 50px; 
+    height: 100%;
+    width: 100%; 
+    border-radius: 50%;
 }
 
-button {
+#selections-box button {
     background-color: none;
     border-radius: 50%;
     height: 60px;
     width: 60px;
+    padding: 0;
     margin: 0 40px;
+}
+
+input {
+    width: 30px;
+
+    text-align: center;
+    border: none;
+
+}
+
+.align-center {
+    text-align: center;
+}
+
+.reset-button {
+    height: 40px;
+    width: 100px;
+
+    color: white;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 1.1em;
+
+    border: 5px solid rgb(139, 224, 255);
+    background: none;
+}
+
+.reset-button:hover {
+    border: 5px solid white;
+    transition-duration: 100ms;
 }
 
 #selections-box {
@@ -40,19 +71,16 @@ button {
 }
 
 #rock {
-    background: url(/images/images.png) no-repeat;
     border: 4px solid green;
     background-size: cover;
 }
 
 #paper {
-    background: url(/images/paper.png) no-repeat;
     border: 4px solid rebeccapurple;
     background-size: cover;
 }
 
 #scissor {
-    background: url(/images/scissor.png) no-repeat;
     border: 4px solid orange;
     background-size: cover;
 }
