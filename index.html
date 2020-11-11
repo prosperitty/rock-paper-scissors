@@ -3,28 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
     <title>Document</title>
 </head>
-
 <body>
     <div>
-        <h2>rock paper scissor!</h2>
+        <h1>rock paper scissor!</h1>
     </div>
-
     <div>
         <p id="message">click your choice to begin!</p>
     </div>
-
     <div id="selections-box">
         <form action="">
-            <button type ="button" class="selection" id="rock"></button>
-            <button type ="button" class="selection" id="paper"></button>
-            <button type ="button" class="selection" id="scissor"></button>
+            <button type ="button" class="selection" id="rock">
+                <img src="images/images.png" alt="">
+            </button>
+            <button type ="button" class="selection" id="paper">
+                <img src="images/paper.png" alt="">
+            </button>
+            <button type ="button" class="selection" id="scissor">
+                <img src="images/scissor.png" alt="">
+            </button>
         </form>
     </div>
-
+    <div class="align-center">
+        <span>Select the amount of wins required for victory:</span>
+        <input class="input-selection" type="number" name="">
+    </div>
+    <div class="align-center">
+        <button class="reset-button">reset</button>
+    </div>
     <div id="main-container">
         <div id="left-column-box">
             <span class="players">you</span>
@@ -33,7 +43,11 @@
         <div id="middle-column-box">
             <span id="standings"></span>
             <p  id="scores">
-                <span id="playerScore">0</span>-<span id="computerScore">0</span>
+                <span id="playerScore">0</span>
+                <span>-</span>
+                <span id="tie-score">0</span>
+                <span>-</span>
+                <span id="computerScore">0</span>
             </p>
             <span class="hidden"></span>
         </div>
