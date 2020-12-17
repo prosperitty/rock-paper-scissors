@@ -101,33 +101,36 @@ function tally() {
 
 function updateStandings(playerSelection, computerSelection) {
     console.log(`Player chose ${playerSelection}, Computer chose ${computerSelection}`);
-    message.textContent = `Player chose ${playerSelection}, Computer chose ${computerSelection}`;
-    playerChoiceText.textContent = playerSelection;
-    computerChoiceText.textContent = computerSelection;
-    if (userWin) {
-        standingsText.textContent = `you win! ${playerSelection} beats ${computerSelection}`;
-        standingsText.style.color = "lightgreen";
-    } else if (computerWin) {
-        standingsText.textContent = `computer wins! ${computerSelection} beats ${playerSelection}`;
-        standingsText.style.color = "red";
-    } else {
-        standingsText.textContent =`tie!`;
-        standingsText.style.color = "orange";
-    };
+    if(!gameOver){
+        playerChoiceText.textContent = playerSelection;
+        computerChoiceText.textContent = computerSelection;
+        if (userWin) {
+            standingsText.textContent = `you win! ${playerSelection} beats ${computerSelection}`;
+            standingsText.style.color = "lightgreen";
+        } else if (computerWin) {
+            standingsText.textContent = `computer wins! ${computerSelection} beats ${playerSelection}`;
+            standingsText.style.color = "red";
+        } else {
+            standingsText.textContent =`tie!`;
+            standingsText.style.color = "orange";
+        };
+    }
 };
 
 function verifyWinner() {
     if (userTally  === winningScore) {
-        standingsText.textContent = `Game Over!`;
+        standingsText.textContent = `Game Over! You Win!`;
         gameOver = true;
     } else if (computerTally === winningScore) {
-        standingsText.textContent = `Game Over!`;
+        standingsText.textContent = `Game Over! Computer wins!`;
         gameOver = true;
     };
 };
 
 input.addEventListener("change", function(){
-    winningScore = Number(input.value);
+    if(!gameOver) {
+        winningScore = Number(input.value);
+    }
 });
 
 reset.addEventListener("click", () => {
