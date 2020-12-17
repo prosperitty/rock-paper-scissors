@@ -6,31 +6,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <div>
-        <h1>rock paper scissor!</h1>
-    </div>
-    <div>
-        <p id="message">click your choice to begin!</p>
-    </div>
+    <h1>rock paper scissor!</h1>
+    <p id="message">click your choice to begin!</p>
     <div id="selections-box">
-        <form action="">
-            <button type ="button" class="selection" id="rock">
-                <img src="images/images.png" alt="">
-            </button>
-            <button type ="button" class="selection" id="paper">
-                <img src="images/paper.png" alt="">
-            </button>
-            <button type ="button" class="selection" id="scissor">
-                <img src="images/scissor.png" alt="">
-            </button>
-        </form>
+        <button type ="button" class="selection" id="rock">
+            <img src="images/images.png" alt="">
+        </button>
+        <button type ="button" class="selection" id="paper">
+            <img src="images/paper.png" alt="">
+        </button>
+        <button type ="button" class="selection" id="scissor">
+            <img src="images/scissor.png" alt="">
+        </button>
     </div>
     <div class="align-center">
-        <span>Select the amount of wins required for victory:</span>
-        <input class="input-selection" type="number" name="">
+        <span>First to: </span>
+        <input class="input-selection" type="number" name="" value="5">
     </div>
     <div class="align-center">
         <button class="reset-button">reset</button>
