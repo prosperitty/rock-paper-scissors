@@ -10,5 +10,5 @@ Click one of three choices provided to start a game with the computer. By defaul
 
 [The Odin Project](https://www.theodinproject.com/courses/foundations/lessons/rock-paper-scissors)
 
-[Live Demo](https://alex-lvl.github.io/rock-paper-scissors/)
+[Live Demo](https://prosperitty.github.io/rock-paper-scissors/)
 
